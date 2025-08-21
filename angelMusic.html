@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promociones Musicales - Estilo Mexicano</title>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-fiesta: #e63946;
+            --color-noche: #1d3557;
+            --color-oro: #ffd166;
+            --color-tierra: #a68a64;
+            --color-blanco: #f1faee;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Verdana', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--color-blanco);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            width: 100%;
+            padding: 2rem 0;
+            text-align: center;
+            background: linear-gradient(to right, var(--color-fiesta), var(--color-noche));
+            border-bottom: 5px solid var(--color-oro);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/mexican-wallpaper.png');
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: var(--color-oro);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Times New Roman', serif;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+            color: var(--color-blanco);
+            font-style: italic;
+        }
+
+        .mariachi-hat {
+            font-size: 4rem;
+            margin: 0 1rem;
+            color: var(--color-oro);
+            animation: swing 3s infinite alternate;
+        }
+
+        @keyframes swing {
+            0% { transform: rotate(-15deg); }
+            100% { transform: rotate(15deg); }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: rgba(29, 53, 87, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 3px solid var(--color-oro);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/aztec.png');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .widget-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 2px dashed var(--color-oro);
+        }
+
+        elevenlabs-convai {
+            width: 100%;
+            min-height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .music-elements {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .music-icon {
+            font-size: 2.5rem;
+            color: var(--color-oro);
+            margin: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .footer {
+            width: 100%;
+            padding: 1.5rem 0;
+            background: linear-gradient(to right, var(--color-noche), var(--color-fiesta));
+            text-align: center;
+            border-top: 3px solid var(--color-oro);
+            margin-top: auto;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: var(--color-blanco);
+            font-size: 1.8rem;
+            margin: 0 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--color-oro);
+            transform: translateY(-3px);
+        }
+
+        .guitar-animation {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 3rem;
+            color: var(--color-oro);
+            animation: strum 4s infinite;
+            transform-origin: bottom center;
+            z-index: 100;
+        }
+
+        @keyframes strum {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(15deg); }
+            50% { transform: rotate(-10deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .serape-stripes {
+            height: 10px;
+            width: 100%;
+            background: linear-gradient(
+                to right,
+                var(--color-fiesta),
+                var(--color-oro),
+                var(--color-noche),
+                var(--color-fiesta),
+                var(--color-oro),
+                var(--color-noche)
+            );
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .container {
+                width: 95%;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="guitar-animation">
+        <i class="fas fa-guitar"></i>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <i class="fas fa-hat-cowboy mariachi-hat"></i>
+            <h1>PROMOCIONES MUSICALES</h1>
+            <div class="subtitle">¡Conoce mi música y charla conmigo!</div>
+            <i class="fas fa-hat-cowboy mariachi-hat"></i>
+        </div>
+    </header>
+
+    <div class="serape-stripes"></div>
+
+    <main class="container">
+        <h2><i class="fas fa-music"></i> Bienvenido a mi espacio musical</h2>
+        <p>Aquí puedes interactuar con mi asistente virtual para conocer más sobre mi música, próximos eventos y mucho más.</p>
+        
+        <div class="music-elements">
+            <i class="fas fa-music music-icon"></i>
+            <i class="fas fa-guitar music-icon" style="animation-delay: 0.5s;"></i>
+            <i class="fas fa-drum music-icon" style="animation-delay: 1s;"></i>
+            <i class="fas fa-microphone music-icon" style="animation-delay: 1.5s;"></i>
+            <i class="fas fa-compact-disc music-icon" style="animation-delay: 2s;"></i>
+        </div>
+
+        <div class="widget-container">
+            <h3><i class="fas fa-comment-alt"></i> Chatea con mi asistente</h3>
+            <elevenlabs-convai agent-id="agent_01jzzp81jre9ev328k1s6bgcph"></elevenlabs-convai>
+        </div>
+
+        <div class="serape-stripes"></div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <p>¡Sígueme en mis redes sociales para estar al tanto de mis próximos lanzamientos!</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.facebook.com/angel.osorio.624792" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-spotify"></i></a>
+        </div>
+        <p>© 2023 Todos los derechos reservados | Música Regional Mexicana</p>
+    </footer>
+
+    <script>
+        // Efecto de letras mexicanas para el título
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = document.querySelector('h1');
+            if (title) {
+                title.innerHTML = title.textContent.split('').map(letter => 
+                    `<span style="display: inline-block; transition: all 0.3s;">${letter}</span>`
+                ).join('');
+                
+                const letters = document.querySelectorAll('h1 span');
+                letters.forEach((letter, index) => {
+                    letter.style.transform = `rotate(${(index % 2) ? '5deg' : '-5deg'})`;
+                    letter.addEventListener('mouseover', () => {
+                        letter.style.transform = 'rotate(0deg) scale(1.3)';
+                        letter.style.color = '#ffd166';
+                    });
+                    letter.addEventListener('mouseout', () => {
+                        letter.style.transform = `rotate(${(index % 2) ? '5deg' : '-5deg'}) scale(1)`;
+                        letter.style.color = '';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
